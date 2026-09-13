@@ -3,11 +3,10 @@ import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 
 /**
- * Base path configuration:
- * - If using a custom domain (e.g., deepak.me or via Vercel): '/'
- * - If using default GitHub Pages repository URL (https://LakshmiDeepak27.github.io/Portfolio/): '/Portfolio/'
+ * Custom Domain Configuration for lakshmideepak.tech:
+ * Custom domains are hosted at root ('/').
  */
-const BASE_PATH = process.env.VITE_BASE || '/Portfolio/'
+const BASE_PATH = process.env.VITE_BASE || '/'
 
 export default defineConfig({
   base: BASE_PATH,
