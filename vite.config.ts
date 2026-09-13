@@ -3,13 +3,13 @@ import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 
 /**
- * GitHub Pages base path — change ONLY this value when deploying:
- * - User site (USERNAME.github.io):           '/'
- * - Project site (USERNAME.github.io/REPO):   '/REPO/'
+ * Base path configuration:
+ * - If using a custom domain (e.g., deepak.me or via Vercel): '/'
+ * - If using default GitHub Pages repository URL (https://LakshmiDeepak27.github.io/Portfolio/): '/Portfolio/'
  */
-const GITHUB_PAGES_BASE = '/Deepak-Portfolio/'
+const BASE_PATH = process.env.VITE_BASE || '/Portfolio/'
 
 export default defineConfig({
-  base: GITHUB_PAGES_BASE,
+  base: BASE_PATH,
   plugins: [react(), tailwindcss()],
 })
