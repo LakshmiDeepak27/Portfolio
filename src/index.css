@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-surface-muted: var(--surface-muted);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-subtle: var(--ink-subtle);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+}
+
+:root {
+  --surface: #f7f5f2;
+  --surface-elevated: #ffffff;
+  --surface-muted: #efebe6;
+  --ink: #1c1917;
+  --ink-muted: #57534e;
+  --ink-subtle: #78716c;
+  --border: #e7e5e4;
+  --border-strong: #d6d3d1;
+  --accent: #8b6914;
+  --accent-hover: #735610;
+  --brush-primary: rgba(139, 105, 20, 0.2);
+  --brush-secondary: rgba(139, 105, 20, 0.1);
+}
+
+.dark {
+  --surface: #0c0c0b;
+  --surface-elevated: #141413;
+  --surface-muted: #1c1c1a;
+  --ink: #f5f5f4;
+  --ink-muted: #a8a29e;
+  --ink-subtle: #78716c;
+  --border: #272524;
+  --border-strong: #3f3f3e;
+  --accent: #c4a035;
+  --accent-hover: #d4b245;
+  --brush-primary: rgba(196, 160, 53, 0.24);
+  --brush-secondary: rgba(196, 160, 53, 0.12);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  html.theme-transition,
+  html.theme-transition *,
+  html.theme-transition *::before,
+  html.theme-transition *::after {
+    transition:
+      background-color 0.45s ease,
+      border-color 0.45s ease,
+      color 0.35s ease,
+      fill 0.35s ease,
+      stroke 0.35s ease !important;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    html.theme-transition,
+    html.theme-transition *,
+    html.theme-transition *::before,
+    html.theme-transition *::after {
+      transition: none !important;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    @apply bg-surface font-sans text-ink antialiased;
+  }
+
+  ::selection {
+    @apply bg-accent/15 text-ink;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-accent;
+  }
+}
+
+@layer utilities {
+  .section-padding {
+    @apply px-5 py-20 sm:px-8 md:px-12 lg:px-16 xl:px-24;
+  }
+
+  .container-wide {
+    @apply mx-auto max-w-6xl;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .nav-slide {
+    transition:
+      transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+      background-color 0.45s ease,
+      border-color 0.45s ease,
+      backdrop-filter 0.45s ease;
+    will-change: transform, opacity;
+  }
+
+  .theme-image-fade {
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .brush-stroke-primary {
+    fill: var(--brush-primary);
+  }
+
+  .brush-stroke-secondary {
+    fill: var(--brush-secondary);
+  }
+
+  .brush-stroke {
+    transition: fill 0.45s ease;
+  }
+
+  .nav-glass {
+    background: rgba(28, 25, 23, 0.62);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow:
+      0 8px 32px -8px rgba(0, 0, 0, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    backdrop-filter: blur(20px) saturate(160%);
+    transition:
+      background-color 0.45s ease,
+      border-color 0.45s ease,
+      box-shadow 0.45s ease;
+  }
+
+  .dark .nav-glass {
+    background: rgba(255, 255, 255, 0.78);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    box-shadow:
+      0 8px 32px -8px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  }
+}
