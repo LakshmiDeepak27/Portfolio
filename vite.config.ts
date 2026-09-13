@@ -3,10 +3,10 @@ import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 
 /**
- * Custom Domain Configuration for lakshmideepak.tech:
- * Custom domains are hosted at root ('/').
+ * GitHub Pages deployment configuration:
+ * For repository https://github.com/LakshmiDeepak27/Portfolio
  */
-const BASE_PATH = process.env.VITE_BASE || '/'
+const BASE_PATH = process.env.VITE_BASE || '/Portfolio/'
 
 export default defineConfig({
   base: BASE_PATH,
